@@ -30,4 +30,4 @@ jobs:
       # Summary
 
       - name: Show the summary
-        run: echo "### Version ${{ env.VERSION }} has been published!" >> $GITHUB_STEP_SUMMARY
+        run: echo "### ${{ env.VERSION }}" >> $GITHUB_STEP_SUMMARY
