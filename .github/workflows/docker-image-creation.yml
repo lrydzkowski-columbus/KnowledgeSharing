@@ -1,0 +1,112 @@
+name: Docker image creation
+
+on:
+  push:
+    tags:
+      - "v*.*.*"
+  workflow_dispatch:
+    inputs:
+      version:
+        description: 'Version'
+        required: true
+
+env:
+  REGISTRY: ghcr.io
+  APP_IMAGE_NAME: lrydzkowski-columbus/knowledge-sharing
+  SQL_UP_IMAGE_NAME: lrydzkowski-columbus/knowledge-sharing-sql-up
+  SQL_DOWN_IMAGE_NAME: lrydzkowski-columbus/knowledge-sharing-sql-down
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout the repository
+        uses: actions/checkout@v2
+
+      - name: Setup .NET Core SDK 6
+        uses: actions/setup-dotnet@v2
+        with:
+          dotnet-version: 6.0.x
+
+      - name: Install dependencies
+        run: dotnet restore
+
+      - name: Build
+        run: dotnet build --configuration Release --no-restore
+
+      - name: Run tests
+        run: dotnet test --no-restore --verbosity normal
+
+  build:
+    runs-on: ubuntu-latest
+
+    needs: test
+    
+    permissions:
+      contents: read
+      packages: write
+
+    steps:
+      - name: Get a version from the tag
+        run: echo "VERSION=${GITHUB_REF/refs\/tags\//}" >> $GITHUB_ENV
+
+      - name: Get a version from the parameter
+        if: "${{ github.event.inputs.version != '' }}"
+        run: echo "VERSION=${{ github.event.inputs.version }}" >> $GITHUB_ENV
+        
+      - name: Show the version
+        run: echo ${{ env.VERSION }}
+    
+      - name: Checkout the repository
+        uses: actions/checkout@v2
+        
+      - name: Sign in to the container registry
+        uses: docker/login-action@v1
+        with:
+          registry: ${{ env.REGISTRY }}
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+
+      # Building an application docker image
+
+      - name: Build an application docker image
+        id: docker_app_build
+        uses: docker/build-push-action@v2
+        with:
+          context: .
+          file: ./Dockerfile
+          push: true
+          tags: ${{ env.REGISTRY }}/${{ env.APP_IMAGE_NAME }}:latest,${{ env.REGISTRY }}/${{ env.APP_IMAGE_NAME }}:${{ env.VERSION }}
+
+      # Checking SQL migration files existence
+
+      - name: Check SQL migration files existence
+        id: checking_migration_sql_files
+        uses: andstor/file-existence-action@v1
+        with:
+          files: "KnowledgeSharing.Persistence.Db/Assets/SQL/${{ env.VERSION }}_up.sql, KnowledgeSharing.Persistence.Db/Assets/SQL/${{ env.VERSION }}_down.sql"
+          
+      # SQL migration up
+
+      - name: Build SQL migration up image
+        if: steps.checking_migration_sql_files.outputs.files_exists == 'true'
+        uses: docker/build-push-action@v2
+        with:
+          context: .
+          file: ./DockerfileSQLMigrationUp
+          push: true
+          tags: ${{ env.REGISTRY }}/${{ env.SQL_UP_IMAGE_NAME }}:latest,${{ env.REGISTRY }}/${{ env.SQL_UP_IMAGE_NAME }}:${{ env.VERSION }}
+          build-args: version=${{ env.VERSION }}
+          
+      # SQL migration down
+
+      - name: Build SQL migration down image
+        if: steps.checking_migration_sql_files.outputs.files_exists == 'true'
+        uses: docker/build-push-action@v2
+        with:
+          context: .
+          file: ./DockerfileSQLMigrationDown
+          push: true
+          tags: ${{ env.REGISTRY }}/${{ env.SQL_DOWN_IMAGE_NAME }}:latest,${{ env.REGISTRY }}/${{ env.SQL_DOWN_IMAGE_NAME }}:${{ env.VERSION }}
+          build-args: version=${{ env.VERSION }}

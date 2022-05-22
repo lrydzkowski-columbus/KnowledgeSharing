@@ -1,0 +1,13 @@
+{
+  "profiles": {
+    "KnowledgeSharing.WebApi": {
+      "commandName": "Project",
+      "launchBrowser": true,
+      "launchUrl": "swagger",
+      "environmentVariables": {
+        "ASPNETCORE_ENVIRONMENT": "Development"
+      },
+      "applicationUrl": "https://localhost:62649;http://localhost:62650"
+    }
+  }
+}

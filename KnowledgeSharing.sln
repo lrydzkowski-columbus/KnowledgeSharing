@@ -1,0 +1,74 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.1.32421.90
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{3E7C273F-DEF0-4C1C-B2E3-568F587A2436}"
+	ProjectSection(SolutionItems) = preProject
+		.dockerignore = .dockerignore
+		.editorconfig = .editorconfig
+		.gitignore = .gitignore
+		Dockerfile = Dockerfile
+		DockerfileSQLMigrationDown = DockerfileSQLMigrationDown
+		DockerfileSQLMigrationUp = DockerfileSQLMigrationUp
+		README.md = README.md
+	EndProjectSection
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KnowledgeSharing.Core", "KnowledgeSharing.Core\KnowledgeSharing.Core.csproj", "{2DB6F553-A027-4B5D-8363-AD4CD8ADCF75}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".github", ".github", "{3AD1585A-D46C-4176-AAF4-A69F31047DB1}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "workflows", "workflows", "{F80FA7CD-F13D-4661-8419-A655AFA0683F}"
+	ProjectSection(SolutionItems) = preProject
+		.github\workflows\deployment.yml = .github\workflows\deployment.yml
+		.github\workflows\docker-image-creation.yml = .github\workflows\docker-image-creation.yml
+	EndProjectSection
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KnowledgeSharing.Persistence.Db", "KnowledgeSharing.Persistence.Db\KnowledgeSharing.Persistence.Db.csproj", "{B43F70B8-AD63-4178-A79D-6740F8A60BB9}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Source", "Source", "{A7529567-7AE5-44A0-BBD3-2C5425F0FEA6}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KnowledgeSharing.WebApi", "KnowledgeSharing.WebApi\KnowledgeSharing.WebApi.csproj", "{2612C2EE-87BD-44F3-AE9D-2E368D55D18D}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{81C0402C-DC88-4D89-9D60-579991619305}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KnowledgeSharing.FunctionalTests", "KnowledgeSharing.FunctionalTests\KnowledgeSharing.FunctionalTests.csproj", "{49C39383-94BE-46D6-89B1-7AF0CDBE0FED}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{2DB6F553-A027-4B5D-8363-AD4CD8ADCF75}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2DB6F553-A027-4B5D-8363-AD4CD8ADCF75}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2DB6F553-A027-4B5D-8363-AD4CD8ADCF75}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2DB6F553-A027-4B5D-8363-AD4CD8ADCF75}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B43F70B8-AD63-4178-A79D-6740F8A60BB9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B43F70B8-AD63-4178-A79D-6740F8A60BB9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B43F70B8-AD63-4178-A79D-6740F8A60BB9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B43F70B8-AD63-4178-A79D-6740F8A60BB9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2612C2EE-87BD-44F3-AE9D-2E368D55D18D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2612C2EE-87BD-44F3-AE9D-2E368D55D18D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2612C2EE-87BD-44F3-AE9D-2E368D55D18D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2612C2EE-87BD-44F3-AE9D-2E368D55D18D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{49C39383-94BE-46D6-89B1-7AF0CDBE0FED}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{49C39383-94BE-46D6-89B1-7AF0CDBE0FED}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{49C39383-94BE-46D6-89B1-7AF0CDBE0FED}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{49C39383-94BE-46D6-89B1-7AF0CDBE0FED}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{2DB6F553-A027-4B5D-8363-AD4CD8ADCF75} = {A7529567-7AE5-44A0-BBD3-2C5425F0FEA6}
+		{3AD1585A-D46C-4176-AAF4-A69F31047DB1} = {3E7C273F-DEF0-4C1C-B2E3-568F587A2436}
+		{F80FA7CD-F13D-4661-8419-A655AFA0683F} = {3AD1585A-D46C-4176-AAF4-A69F31047DB1}
+		{B43F70B8-AD63-4178-A79D-6740F8A60BB9} = {A7529567-7AE5-44A0-BBD3-2C5425F0FEA6}
+		{2612C2EE-87BD-44F3-AE9D-2E368D55D18D} = {A7529567-7AE5-44A0-BBD3-2C5425F0FEA6}
+		{49C39383-94BE-46D6-89B1-7AF0CDBE0FED} = {81C0402C-DC88-4D89-9D60-579991619305}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {649A9BEA-6BA4-45BA-805D-8CBE81303EE6}
+	EndGlobalSection
+EndGlobal
