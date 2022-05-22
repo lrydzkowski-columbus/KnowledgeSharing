@@ -45,5 +45,8 @@ internal class OrderConfiguration : IEntityTypeConfiguration<OrderEntity>
         builder.Property(order => order.CreatedAt)
             .HasColumnName("created_at")
             .IsRequired();
+
+        builder.Property(order => order.FinalizedAt)
+            .HasColumnName("finalized_at");
     }
 }
