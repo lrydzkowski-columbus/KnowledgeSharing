@@ -10,5 +10,7 @@ public class OrderEntity
 
     public DateTime CreatedAt { get; set; }
 
+    public DateTime? FinalizedAt { get; set; }
+
     public ICollection<OrderPositionEntity> OrderPositions { get; set; } = new List<OrderPositionEntity>();
 }
