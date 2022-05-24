@@ -20,6 +20,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".github", ".github", "{3AD1
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "workflows", "workflows", "{F80FA7CD-F13D-4661-8419-A655AFA0683F}"
 	ProjectSection(SolutionItems) = preProject
+		deployment-for-production.yml = deployment-for-production.yml
 		.github\workflows\deployment.yml = .github\workflows\deployment.yml
 		.github\workflows\docker-image-creation.yml = .github\workflows\docker-image-creation.yml
 	EndProjectSection
@@ -32,7 +33,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KnowledgeSharing.WebApi", "
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{81C0402C-DC88-4D89-9D60-579991619305}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KnowledgeSharing.FunctionalTests", "KnowledgeSharing.FunctionalTests\KnowledgeSharing.FunctionalTests.csproj", "{49C39383-94BE-46D6-89B1-7AF0CDBE0FED}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KnowledgeSharing.FunctionalTests", "KnowledgeSharing.FunctionalTests\KnowledgeSharing.FunctionalTests.csproj", "{49C39383-94BE-46D6-89B1-7AF0CDBE0FED}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
