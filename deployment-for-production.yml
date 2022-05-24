@@ -1,4 +1,4 @@
-name: Deployment
+name: Deployment for production
 
 concurrency: production
 
@@ -13,6 +13,10 @@ jobs:
   build:
     runs-on: ubuntu-latest
 
+    environment:
+      name: production
+      url: http://knowledge-sharing.westeurope.cloudapp.azure.com/version
+
     steps:
       - name: Get the version
         run: echo "VERSION=${{ github.event.inputs.version }}" >> $GITHUB_ENV
@@ -25,8 +29,8 @@ jobs:
       - name: Trigger the deployment hook
         uses: distributhor/workflow-webhook@v2
         env:
-          webhook_url: ${{ secrets.WEBHOOK_URL }}
-          webhook_secret: ${{ secrets.WEBHOOK_SECRET }}
+          webhook_url: ${{ secrets.PRODUCTION_WEBHOOK_URL }}
+          webhook_secret: ${{ secrets.PRODUCTION_WEBHOOK_SECRET }}
           data: '{ "version": "${{ env.VERSION }}" }'
 
       # Summary

@@ -8,6 +8,8 @@ public class CategoryEntity
 
     public string? Description { get; set; }
 
+    public bool IsVisible { get; set; } = true;
+
     public int? ParentCategoryId { get; set; }
 
     public CategoryEntity? ParentCategory { get; set; } = null;
