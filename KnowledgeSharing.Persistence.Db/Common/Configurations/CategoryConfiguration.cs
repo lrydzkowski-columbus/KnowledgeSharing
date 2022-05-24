@@ -56,6 +56,9 @@ internal class CategoryConfiguration : IEntityTypeConfiguration<CategoryEntity>
             .HasColumnName("description")
             .HasMaxLength(2000);
 
+        builder.Property(category => category.IsVisible)
+            .HasColumnName("is_visible");
+
         builder.Property(category => category.ParentCategoryId)
             .HasColumnName("parent_category_id");
     }
