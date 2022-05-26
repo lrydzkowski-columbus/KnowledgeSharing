@@ -23,6 +23,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "workflows", "workflows", "{
 		.github\workflows\deployment-for-production.yml = .github\workflows\deployment-for-production.yml
 		.github\workflows\deployment.yml = .github\workflows\deployment.yml
 		.github\workflows\docker-image-creation.yml = .github\workflows\docker-image-creation.yml
+		.github\workflows\tests-inside-container.yml = .github\workflows\tests-inside-container.yml
 	EndProjectSection
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KnowledgeSharing.Persistence.Db", "KnowledgeSharing.Persistence.Db\KnowledgeSharing.Persistence.Db.csproj", "{B43F70B8-AD63-4178-A79D-6740F8A60BB9}"
