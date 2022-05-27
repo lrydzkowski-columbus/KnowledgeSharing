@@ -4,14 +4,12 @@ public class Program
 {
     public static void Main(string[] args)
     {
-        var builder = WebApplication.CreateBuilder(args);
+        WebApplicationBuilder builder = WebApplication.CreateBuilder(args);
         builder.Services.AddWebApiServices(builder.Configuration);
-        var app = builder.Build();
-        Configure(app);
-        app.Run();
+        Configure(builder.Build()).Run();
     }
 
-    private static void Configure(WebApplication app)
+    private static WebApplication Configure(WebApplication app)
     {
         if (app.Environment.IsDevelopment())
         {
@@ -21,5 +19,6 @@ public class Program
         app.UseHttpsRedirection();
         app.UseAuthorization();
         app.MapControllers();
+        return app;
     }
 }
