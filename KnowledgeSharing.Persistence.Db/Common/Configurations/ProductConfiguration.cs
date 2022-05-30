@@ -41,8 +41,5 @@ internal class ProductConfiguration : IEntityTypeConfiguration<ProductEntity>
 
         builder.Property(product => product.Price)
             .HasColumnName("price");
-
-        builder.Property(product => product.ImageUrl)
-            .HasColumnName("image_url");
     }
 }
