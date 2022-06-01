@@ -27,3 +27,16 @@ steps:
     command: test
     projects: 'KnowledgeSharing.FunctionalTests/KnowledgeSharing.FunctionalTests.csproj'
     arguments: '--configuration $(buildConfiguration)'
+
+- task: DotNetCoreCLI@2
+  displayName: Publish
+  inputs:
+    command: publish
+    projects: 'KnowledgeSharing.WebApi/KnowledgeSharing.WebApi.csproj'
+    arguments: '-c $(buildConfiguration) -o $(Build.ArtifactStagingDirectory)/KnowledgeSharingApp'
+    
+- task: PublishBuildArtifacts@1
+  displayName: 'Publish DEV artifacts'
+  inputs:
+    PathtoPublish: '$(Build.ArtifactStagingDirectory)/KnowledgeSharingApp'
+    ArtifactName: 'KnowledgeSharingApp'
